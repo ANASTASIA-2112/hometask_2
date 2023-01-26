@@ -1,1 +1,1 @@
-https://anastasia-2112.github.io/homrtask_2/
+https://anastasia-2112.github.io/hometask_2/
