@@ -10,26 +10,24 @@ type GreetingContainerPropsType = {
 
 export const pureAddUser = (name: string, setError: (error: string) => void, setName: (name: string) => void, addUserCallback: (name: string) => void) => {
     // если имя пустое - показать ошибку, иначе - добавить юзера и очистить инпут
-    if (name.trim() === " ") {
-        setError('')
-        setName('')
-    } else {
+    if (name.trim().length === 0) {
+        setError('Ошибка! Введите имя!')
+    } else
         addUserCallback(name)
-        setName('')
-    }
+    setName('')
+
 }
 
 export const pureOnBlur = (name: string, setError: (error: string) => void) => { // если имя пустое - показать ошибку
-    if (name.trim().length !== 0) {
-        setError('Ошибка! Введите имя!')
+    if (name.trim()) {
+        setError("Ошибка! Введите имя!")
+
     }
 }
 
 export const pureOnEnter = (e: KeyboardEvent<HTMLInputElement>, addUser: () => void) => { // если нажата кнопка Enter - добавить
-    if (e.key === 'Enter') {
-        addUser()
-
-    }
+    if (e.key === 'Enter')
+        addUser();
 }
 
 
@@ -38,24 +36,24 @@ export const pureOnEnter = (e: KeyboardEvent<HTMLInputElement>, addUser: () => v
 
 // более современный и удобный для про :)
 const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
-                                                                     users,
-                                                                     addUserCallback,
-                                                                 }) => {
+        users,
+        addUserCallback,
+        }) => {
     // деструктуризация пропсов
     const [name, setName] = useState<string>('') // need to fix any
     const [error, setError] = useState<string>('') // need to fix any
 
     const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => { // need to fix any
-        const trimmedName = e.currentTarget.value.trim()
-
-        if (trimmedName) {
-            setName(trimmedName)
-            error && setError('')
-
+        const trimmesName = (e.currentTarget.value.trim())
+        if (trimmesName) {
+            setError(trimmesName)
+            setError('')
         } else {
-            setName('')
+            setName("")
             error && setError('Ошибка! Введите имя!')
         }
+
+
     }
     const addUser = () => {
         pureAddUser(name, setError, setName, addUserCallback)
@@ -67,6 +65,8 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
 
     const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
         pureOnEnter(e, addUser)
+
+
     }
 
     const totalUsers = users.length // need to fix
@@ -86,4 +86,4 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
     )
 }
 
-export default GreetingContainer
+export default GreetingContainer;
