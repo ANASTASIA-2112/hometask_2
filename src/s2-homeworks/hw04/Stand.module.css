@@ -1,0 +1,30 @@
+.stand {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 554px;
+    width: 1280px;
+    left: 0px;
+    top: 1674px;
+    border-radius: 0px;
+
+
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
